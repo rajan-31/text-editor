@@ -1,22 +1,74 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Document</title>
+    <title>Text Editor</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <p>Editor</p>
-    <textarea rows="10" class="boxsizingBorder" id="main">Hello, there.</textarea>
-    <p>Reference <button onclick="handleRef(this)">disable</button></p>
-    <textarea rows="10" class="boxsizingBorder" id="ref">Hello, there.</textarea>
+    
+    <div id="area">
+        <h3><center>Text Editor 1</center></h1>
+        <div id="editor1"></div>
+            
+        <h3><center>Text Editor 2</center></h1>
+        <div id="editor2"></div>
 
-    <script src="main.js"></script>
+        <p>Note: Data saved in local storage. For a reason: width is 70%, grammer disabled in 2nd editor.</p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#editor1').summernote({
+                placeholder: 'Start typing...',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'strikethrough', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    //   ['table', ['table']],
+                    //   ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'undo', 'redo', 'help']]
+                ],
+                callbacks: {
+                    onChange: function(contents, $editable) {
+                        localStorage.editor1 = contents
+                    }
+                }
+            });
+
+            $('#editor2').summernote({
+                placeholder: 'Start typing...',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'strikethrough', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    //   ['table', ['table']],
+                    //   ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'help']]
+                ],
+                callbacks: {
+                    onChange: function(contents, $editable) {
+                        localStorage.editor2 = contents
+                    }
+                },
+                disableGrammar: true
+            });
+
+            $('#editor1').summernote('code', localStorage.editor1);
+            $('#editor2').summernote('code', localStorage.editor2);
+        });
+    </script>
 </body>
 
 </html>

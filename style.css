@@ -1,7 +1,7 @@
-.boxsizingBorder {
+body {
+    margin: 20px;
+}
+
+#area {
     width: 70%;
-    max-width: 70%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
