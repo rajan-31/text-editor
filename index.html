@@ -41,7 +41,7 @@
                     //   ['table', ['table']],
                     //   ['insert', ['link', 'picture', 'video']],
                     ['height', ['height']],
-                    ['view', ['fullscreen', 'undo', 'redo', 'help']]
+                    ['view', ['undo', 'redo', 'help']]
                 ],
                 callbacks: {
                     onChange: function(contents, $editable) {
@@ -63,7 +63,7 @@
                     //   ['table', ['table']],
                     //   ['insert', ['link', 'picture', 'video']],
                     ['height', ['height']],
-                    ['view', ['fullscreen', 'help']]
+                    ['view', ['help']]
                 ],
                 callbacks: {
                     onChange: function(contents, $editable) {
@@ -75,6 +75,7 @@
 
             $('#editor1').summernote('code', localStorage.editor1);
             $('#editor2').summernote('code', localStorage.editor2);
+            $('#editor1, #editor2').summernote('fontName', 'Times New Roman');
         });
     </script>
 </body>
